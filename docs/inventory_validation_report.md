@@ -1,6 +1,6 @@
 # MB-OLAP V2: ClickHouse Warehouse Inventory Data Validation & Reconciliation Report
 **Dataset Source:** `data/sales1april-15spet25.xlsx`  
-**Execution Timestamp:** 2026-09-29 11:55:14  
+**Execution Timestamp:** 2026-10-31 00:39:16  
 **Target Table:** `fact_inventory`  
 **Enriched View:** `v_fact_inventory_enriched`  
 **Grain:** Store (`store_code`) × Item Code (`item_code`) × Report Period (`2025-04-01 to 2025-09-15`)  
@@ -75,10 +75,10 @@ Per requirement 3 ("Preserve all signed numeric values exactly. Do NOT apply ABS
 
 ### B. Product Dimension (`dim_product`)
 - **Inventory SKUs:** 118,861
-- **Sales Master SKUs:** 976,146
-- **Shared / Overlapping SKUs:** **114,032 (95.94% of inventory SKUs)**
-- **Inventory-Only SKUs (Stock held/transferred, no billed sales in period):** **4,829**
-- **Sales-Only SKUs (Billed in sales file, not present in inventory report):** **862,114**
+- **Sales Master SKUs:** 156,771
+- **Shared / Overlapping SKUs:** **103,484 (87.06% of inventory SKUs)**
+- **Inventory-Only SKUs (Stock held/transferred, no billed sales in period):** **15,377**
+- **Sales-Only SKUs (Billed in sales file, not present in inventory report):** **53,287**
 
 ---
 

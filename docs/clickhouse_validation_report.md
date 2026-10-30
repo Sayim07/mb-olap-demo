@@ -1,6 +1,6 @@
 # MB-OLAP V2: ClickHouse Warehouse Data Validation & Reconciliation Report
 **Dataset Source:** `data/1april-15sept2025.xlsx`  
-**Execution Timestamp:** 2026-09-29 11:57:22  
+**Execution Timestamp:** 2026-10-31 00:37:32  
 **Audit Status:** 🟢 **PASS (100.00% Reconciled)**
 
 ---

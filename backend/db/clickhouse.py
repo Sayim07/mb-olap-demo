@@ -118,12 +118,16 @@ def get_clickhouse_settings() -> dict:
     Safe defaults for local development. Never hard-code credentials.
     """
     from backend.app.config import settings
+    host = getattr(settings, "CLICKHOUSE_HOST", os.getenv("CLICKHOUSE_HOST", "localhost"))
+    port = int(getattr(settings, "CLICKHOUSE_PORT", os.getenv("CLICKHOUSE_PORT", "8123")))
+    secure = os.getenv("CLICKHOUSE_SECURE", "false").lower() in ("true", "1") or port in (8443, 9440) or "clickhouse.cloud" in host
     return {
-        "host": getattr(settings, "CLICKHOUSE_HOST", os.getenv("CLICKHOUSE_HOST", "localhost")),
-        "port": int(getattr(settings, "CLICKHOUSE_PORT", os.getenv("CLICKHOUSE_PORT", "8123"))),
+        "host": host,
+        "port": port,
         "database": getattr(settings, "CLICKHOUSE_DATABASE", os.getenv("CLICKHOUSE_DATABASE", "mb_olap_v2")),
         "username": getattr(settings, "CLICKHOUSE_USER", os.getenv("CLICKHOUSE_USER", "default")),
         "password": getattr(settings, "CLICKHOUSE_PASSWORD", os.getenv("CLICKHOUSE_PASSWORD", "")),
+        "secure": secure,
         "connect_timeout": int(os.getenv("CLICKHOUSE_CONNECT_TIMEOUT", "10")),
         "send_receive_timeout": int(os.getenv("CLICKHOUSE_SEND_RECEIVE_TIMEOUT", "300")),
         "settings": {

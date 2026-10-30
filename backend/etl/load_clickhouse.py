@@ -321,11 +321,13 @@ def execute_clickhouse_load(args, fact_rows, items_dict):
     import clickhouse_connect
 
     print(f"\n2. Connecting to ClickHouse at {args.host}:{args.port} (DB: {args.database})...")
+    secure = int(args.port) in (8443, 9440) or 'clickhouse.cloud' in str(args.host)
     client = clickhouse_connect.get_client(
         host=args.host,
         port=args.port,
         username=args.user,
         password=args.password,
+        secure=secure,
         connect_timeout=15,
         send_receive_timeout=300
     )
