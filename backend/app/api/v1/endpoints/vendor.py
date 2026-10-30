@@ -34,7 +34,7 @@ def get_vendor_scorecard(
     store_ids: Optional[List[int]] = Query(None),
     months: Optional[List[str]] = Query(None),
     sort_by: str = Query("vendor_score"),
-    order: str = Query("desc", enum=["asc", "desc"]),
+    order: str = Query("desc"),
     limit: int = Query(100, ge=1, le=5000),
     offset: int = Query(0, ge=0),
     db = Depends(get_db),

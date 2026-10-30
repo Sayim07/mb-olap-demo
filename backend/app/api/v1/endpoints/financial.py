@@ -15,7 +15,7 @@ router = APIRouter()
 
 @router.get("/gmroi", response_model=StandardResponse[Optional[List[GmroiItem]]])
 def get_gmroi_analysis(
-    group_by: str = Query("store", enum=["store", "department", "vendor", "sku"]),
+    group_by: str = Query("store"),
     store_ids: Optional[List[int]] = Query(None),
     department: Optional[str] = Query(None),
     limit: Optional[int] = Query(None, ge=1, le=1000),

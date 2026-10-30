@@ -21,7 +21,7 @@ def get_category_hierarchy(
     section: Optional[str] = Query(None),
     store_ids: Optional[List[int]] = Query(None),
     months: Optional[List[str]] = Query(None),
-    group_level: str = Query("department", enum=["division", "section", "department"]),
+    group_level: str = Query("department"),
     db = Depends(get_db),
 ):
     """

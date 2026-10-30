@@ -16,8 +16,8 @@ router = APIRouter()
 
 @router.get("/feed", response_model=StandardResponse[Optional[List[RecommendationItem]]])
 def get_recommendation_feed(
-    category: Optional[str] = Query(None, enum=["REORDER", "TRANSFER", "MARKDOWN"]),
-    priority: Optional[str] = Query(None, enum=["CRITICAL", "HIGH", "MEDIUM", "LOW"]),
+    category: Optional[str] = Query(None),
+    priority: Optional[str] = Query(None),
     min_confidence: Optional[float] = Query(None, ge=0.0, le=100.0),
     department: Optional[str] = Query(None),
     limit: int = Query(50, ge=1, le=200),

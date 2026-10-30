@@ -17,7 +17,7 @@ router = APIRouter()
 def get_store_stock_cover(
     store_ids: Optional[List[int]] = Query(None),
     department: Optional[str] = Query(None),
-    health_status: Optional[str] = Query(None, enum=["HIGH_RISK_STOCKOUT", "OVERSTOCKED", "BALANCED", "NEGATIVE_TRANSFER_LAG"]),
+    health_status: Optional[str] = Query(None),
     db = Depends(get_db),
 ):
     """
@@ -200,8 +200,8 @@ def get_rebalance_recommendations(
     target_store_code: Optional[int] = Query(None),
     store_ids: Optional[List[int]] = Query(None),
     department: Optional[str] = Query(None),
-    transfer_type: Optional[str] = Query(None, enum=["DC_REPLENISHMENT", "LATERAL_REBALANCE"]),
-    urgency_level: Optional[str] = Query(None, enum=["CRITICAL", "HIGH", "MEDIUM"]),
+    transfer_type: Optional[str] = Query(None),
+    urgency_level: Optional[str] = Query(None),
     min_transfer_qty: int = Query(1, ge=1),
     limit: int = Query(50, ge=1, le=500),
     db = Depends(get_db),

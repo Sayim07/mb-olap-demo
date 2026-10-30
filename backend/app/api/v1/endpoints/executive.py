@@ -146,8 +146,8 @@ def get_executive_kpis(
 def get_store_rankings(
     store_ids: Optional[List[int]] = Query(None),
     months: Optional[List[str]] = Query(None),
-    sort_by: str = Query("revenue", enum=["revenue", "margin", "woc", "stock_value"]),
-    order: str = Query("desc", enum=["asc", "desc"]),
+    sort_by: str = Query("revenue"),
+    order: str = Query("desc"),
     db: DuckDBPyConnection = Depends(get_db),
 ):
     """
